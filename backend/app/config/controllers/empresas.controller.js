@@ -14,9 +14,9 @@ exports.create = (req, res) => {
 
   // Create a empresa
   const empresa = {
+    manufacture_id:req.body.manufacture_id,
     manufacturer_name: req.body.manufacturer_name,
     manufacturer_cnpj: req.body.manufacturer_cnpj,
-    published: req.body.published ? req.body.published : false
   };
 
   // Save empresa in the database

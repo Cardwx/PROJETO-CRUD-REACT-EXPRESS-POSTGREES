@@ -5,7 +5,7 @@ import "./App.css";
 
 import AddEmpresa from "./components/add-empresa.component";
 import Empresa from "./components/empresa.component";
-import TutorialsList from "./components/empresas-list.component";
+import EmpresasList from "./components/empresas-list.component";
 
 class App extends Component {
   render() {
@@ -31,7 +31,7 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/empresas"]} component={TutorialsList} />
+            <Route exact path={["/", "/empresas"]} component={EmpresasList} />
             <Route exact path="/add" component={AddEmpresa} />
             <Route path="/empresas/:id" component={Empresa} />
           </Switch>

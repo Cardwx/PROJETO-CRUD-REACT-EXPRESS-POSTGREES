@@ -4,8 +4,13 @@ import EmpresaDataService from "../services/empresa.service";
 export default class AddEmpresa extends Component {
   constructor(props) {
     super(props);
+
     this.onChangeManufacturerName = this.onChangeManufacturerName.bind(this);
     this.onChangeManufacturerCnpj = this.onChangeManufacturerCnpj.bind(this);
+
+    this.saveEmpresa = this.saveEmpresa.bind(this);
+    this.newEmpresa = this.newEmpresa.bind(this);
+ 
     /*
     this.onChangeManufacturerFantasyName = this.onChangeManufacturerFantasyName.bind(this);
     this.onChangeManufacturerSocialName = this.onChangeManufacturerSocialName.bind(this);
@@ -15,13 +20,15 @@ export default class AddEmpresa extends Component {
     this.onChangeManufacturerCity = this.onChangeManufacturerCity.bind(this);
     this.onChangeManufacturerBairro = this.onChangeManufacturerBairro.bind(this);
     */
-    this.saveEmpresa = this.saveEmpresa.bind(this);
-    this.newEmpresa = this.newEmpresa.bind(this);
+
 
     this.state = {
       manufacture_id: null,
       manufacturer_name: "",
-      manufacturer_cnpj : "", /*
+      manufacturer_cnpj : "",
+
+      submitted: false
+      /*
       manufacturer_fantasy_name  : "",
       manufacturer_social_name  : "",
       manufacturer_active  : "",
@@ -30,11 +37,11 @@ export default class AddEmpresa extends Component {
       manufacturer_city  : "",
       manufacturer_bairro   : "",
       */
-      submitted: false
+     
     };
   }
-// realiza alterações se necessário
-// nome empresa
+
+
   onChangeManufacturerName(e) {
     this.setState({
       manufacturer_name: e.target.value,
@@ -82,12 +89,13 @@ export default class AddEmpresa extends Component {
   onChangeManufacturerBairro(e){
     this.setState({manufacturer_bairro: e.target.value,});}
    */
+
+    
   saveEmpresa() {
     var data = {
-      /*title: this.state.title,
-      description: this.state.description*/
       manufacturer_name: this.state.manufacturer_name,
       manufacturer_cnpj: this.state.manufacturer_cnpj
+    };
       /*
       manufacturer_fantasy_name: this.state.manufacturer_fantasy_name,
       manufacturer_social_name: this.state.manufacturer_social_name,
@@ -97,18 +105,25 @@ export default class AddEmpresa extends Component {
       manufacturer_city: this.state.manufacturer_city,
       manufacturer_bairro: this.state.manufacturer_bairro,
       */
-    };
+    
 
     EmpresaDataService.create(data)
       .then(response => {
         this.setState({
+          manufacture_id: response.data.manufacture_id,
+          manufacturer_name: response.data.manufacturer_name,
+          manufacturer_cnpj: response.data.manufacturer_cnpj,
+          published: response.data.published,
+
+          submitted: true
+        });
           /*
           id: response.data.id,
           title: response.data.title,
           description: response.data.description,
           published: response.data.published,*/
-          manufacturer_name: response.data.manufacturer_name,
-          manufacturer_cnpj: response.data.manufacturer_cnpj,
+          //manufacture_id: response.data.manufacture_id,
+          
          /* manufacturer_fantasy_name: response.data.manufacturer_fantasy_name,
           manufacturer_social_name: response.data.manufacturer_social_name,
           manufacturer_active: response.data.manufacturer_active,
@@ -118,8 +133,6 @@ export default class AddEmpresa extends Component {
           manufacturer_bairro: response.data.manufacturer_bairro,
           */
 
-          submitted: true
-        });
         console.log(response.data);
       })
       .catch(e => {

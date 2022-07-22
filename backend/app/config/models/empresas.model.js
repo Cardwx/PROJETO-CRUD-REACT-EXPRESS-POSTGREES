@@ -1,14 +1,19 @@
 module.exports = (sequelize, Sequelize) => {
     const Empresa = sequelize.define("empresa", {
-        manufacture_id : {
-        type: Sequelize.STRING
+      manufacture_id : {
+        type: Sequelize.INTEGER,
+        primaryKey: true
       },
+
       manufacturer_name : {
         type: Sequelize.STRING
       },
-      manufacturer_cnpj : {
-        type: Sequelize.STRING
+        manufacturer_cnpj : {
+        type: Sequelize.INTEGER
       },
+      
+    
+      /*
       manufacturer_fantasy_name : {
         type: Sequelize.STRING
       },
@@ -29,7 +34,8 @@ module.exports = (sequelize, Sequelize) => {
       },
       manufacturer_bairro     : {
         type: Sequelize.STRING
-      },
+      },*/
+
     });
   
     return Empresa;

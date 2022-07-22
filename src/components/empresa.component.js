@@ -4,18 +4,18 @@ import EmpresaDataService from "../services/empresa.service";
 export default class Empresa extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeCnpj = this.onChangeCnpj.bind(this);
+    this.onChangeName = this.onChangeName.bind(this);
     this.getEmpresa = this.getEmpresa.bind(this);
-    this.updatePublished = this.updatePublished.bind(this);
-    this.updateEmpresa = this.updateEmpresa.bind(this);
     this.deleteEmpresa = this.deleteEmpresa.bind(this);
 
     this.state = {
       currentEmpresa: {
         manufacture_id: null,
+
         manufacturer_name: "",
         manufacturer_cnpj : "", 
+        /*
         manufacturer_fantasy_name  : "",
         manufacturer_social_name  : "",
         manufacturer_active  : "",
@@ -24,7 +24,7 @@ export default class Empresa extends Component {
         manufacturer_city  : "",
         manufacturer_bairro   : "",
         published: false,
-  
+        */
         submitted: false
       },
       message: ""
@@ -71,7 +71,7 @@ export default class Empresa extends Component {
         console.log(e);
       });
   }
-
+  /*
   updatePublished(status) {
     var data = {
       manufacture_id: this.state.manufacture_id,
@@ -117,7 +117,7 @@ export default class Empresa extends Component {
         console.log(e);
       });
   }
-
+*//*
   deleteEmpresa() {    
     EmpresaDataService.delete(this.state.currentEmpresa.id)
       .then(response => {
@@ -127,7 +127,7 @@ export default class Empresa extends Component {
       .catch(e => {
         console.log(e);
       });
-  }
+  }*/
 
   render() {
     const { currentEmpresa } = this.state;
@@ -145,7 +145,7 @@ export default class Empresa extends Component {
                   className="form-control"
                   id="title"
                   value={currentEmpresa.title}
-                  onChange={this.onChangeTitle}
+                  onChange={this.onChangeCnpj}
                 />
               </div>
               <div className="form-group">
@@ -155,7 +155,7 @@ export default class Empresa extends Component {
                   className="form-control"
                   id="description"
                   value={currentEmpresa.description}
-                  onChange={this.onChangeDescription}
+                  onChange={this.onChangeName}
                 />
               </div>
 
