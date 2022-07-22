@@ -14,8 +14,8 @@ exports.create = (req, res) => {
 
   // Create a empresa
   const empresa = {
-    title: req.body.title,
-    description: req.body.description,
+    manufacturer_name: req.body.manufacturer_name,
+    manufacturer_cnpj: req.body.manufacturer_cnpj,
     published: req.body.published ? req.body.published : false
   };
 
@@ -34,7 +34,7 @@ exports.create = (req, res) => {
 
 // Retrieve all empresa from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
+  const title = req.query.manufacturer_name;
   var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
 
   Empresa.findAll({ where: condition })

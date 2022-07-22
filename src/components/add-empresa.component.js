@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import EmpresaDataService from "../services/empresa.service";
 
-export default class AddTutorial extends Component {
+export default class AddEmpresa extends Component {
   constructor(props) {
     super(props);
     this.onChangeManufacturerName = this.onChangeManufacturerName.bind(this);
     this.onChangeManufacturerCnpj = this.onChangeManufacturerCnpj.bind(this);
+    /*
     this.onChangeManufacturerFantasyName = this.onChangeManufacturerFantasyName.bind(this);
     this.onChangeManufacturerSocialName = this.onChangeManufacturerSocialName.bind(this);
     this.onChangeManufacturerActive = this.onChangeManufacturerActive.bind(this);
@@ -13,13 +14,14 @@ export default class AddTutorial extends Component {
     this.onChangeManufacturerCountry = this.onChangeManufacturerCountry.bind(this);
     this.onChangeManufacturerCity = this.onChangeManufacturerCity.bind(this);
     this.onChangeManufacturerBairro = this.onChangeManufacturerBairro.bind(this);
+    */
     this.saveEmpresa = this.saveEmpresa.bind(this);
     this.newEmpresa = this.newEmpresa.bind(this);
 
     this.state = {
       manufacture_id: null,
       manufacturer_name: "",
-      manufacturer_cnpj : "", 
+      manufacturer_cnpj : "", /*
       manufacturer_fantasy_name  : "",
       manufacturer_social_name  : "",
       manufacturer_active  : "",
@@ -27,8 +29,7 @@ export default class AddTutorial extends Component {
       manufacturer_country  : "",
       manufacturer_city  : "",
       manufacturer_bairro   : "",
-      published: false,
-
+      */
       submitted: false
     };
   }
@@ -40,6 +41,10 @@ export default class AddTutorial extends Component {
     
     });
   }
+
+   // altera cnpj
+   onChangeManufacturerCnpj(e){
+    this.setState({manufacturer_cnpj: e.target.value,});}
     /*
       manufacturer_cnpj: e.target.value,
       manufacturer_fantasy_name: e.target.value,
@@ -50,41 +55,40 @@ export default class AddTutorial extends Component {
       manufacturer_city: e.target.value,
       manufacturer_bairro: e.target.value*/
 
-  // altera cnpj
-  onChangeManufacturerCnpj(){
-    this.setState({manufacturer_cnpj: e.target.value,});}
-
+ 
+    /*
   // altera nome fantasia
-  onChangeManufacturerFantasyName(){
+  onChangeManufacturerFantasyName(e){
     this.setState({manufacturer_fantasy_name: e.target.value,});}
 
   //altera nome social
-  onChangeManufacturerSocialName(){
+  onChangeManufacturerSocialName(e){
     this.setState({manufacturer_social_name: e.target.value,});}
 
     //altera se está ativa ou não
-  onChangeManufacturerActive(){
+  onChangeManufacturerActive(e){
     this.setState({manufacturer_active: e.target.value,});}
 
     //altera site
-  onChangeManufacturerSite(){
+  onChangeManufacturerSite(e){
     this.setState({manufacturer_site: e.target.value,});}
     //altera pais
-  onChangeManufacturerCountry(){
+  onChangeManufacturerCountry(e){
     this.setState({manufacturer_country: e.target.value,});}
     //altera cidade
-  onChangeManufacturerCity(){
+  onChangeManufacturerCity(e){
     this.setState({manufacturer_city: e.target.value,});}
     //altera bairro
-  onChangeManufacturerBairro(){
+  onChangeManufacturerBairro(e){
     this.setState({manufacturer_bairro: e.target.value,});}
-   
+   */
   saveEmpresa() {
     var data = {
       /*title: this.state.title,
       description: this.state.description*/
       manufacturer_name: this.state.manufacturer_name,
-      manufacturer_cnpj: this.state.manufacturer_cnpj,
+      manufacturer_cnpj: this.state.manufacturer_cnpj
+      /*
       manufacturer_fantasy_name: this.state.manufacturer_fantasy_name,
       manufacturer_social_name: this.state.manufacturer_social_name,
       manufacturer_active: this.state.manufacturer_active,
@@ -92,7 +96,7 @@ export default class AddTutorial extends Component {
       manufacturer_country: this.state.manufacturer_country,
       manufacturer_city: this.state.manufacturer_city,
       manufacturer_bairro: this.state.manufacturer_bairro,
-
+      */
     };
 
     EmpresaDataService.create(data)
@@ -105,14 +109,14 @@ export default class AddTutorial extends Component {
           published: response.data.published,*/
           manufacturer_name: response.data.manufacturer_name,
           manufacturer_cnpj: response.data.manufacturer_cnpj,
-          manufacturer_fantasy_name: response.data.manufacturer_fantasy_name,
+         /* manufacturer_fantasy_name: response.data.manufacturer_fantasy_name,
           manufacturer_social_name: response.data.manufacturer_social_name,
           manufacturer_active: response.data.manufacturer_active,
           manufacturer_site: response.data.manufacturer_site,
           manufacturer_country: response.data.manufacturer_country,
           manufacturer_city: response.data.manufacturer_city,
           manufacturer_bairro: response.data.manufacturer_bairro,
-
+          */
 
           submitted: true
         });
@@ -128,15 +132,6 @@ export default class AddTutorial extends Component {
       manufacture_id: null,
       manufacturer_name: "",
       manufacturer_cnpj : "", 
-      manufacturer_fantasy_name  : "",
-      manufacturer_social_name  : "",
-      manufacturer_active  : "",
-      manufacturer_site  : "",
-      manufacturer_country  : "",
-      manufacturer_city  : "",
-      manufacturer_bairro   : "",
-      published: false,
-
       submitted: false
     });
   }
@@ -153,33 +148,125 @@ export default class AddTutorial extends Component {
           </div>
         ) : (
           <div>
+            
             <div className="form-group">
-              <label htmlFor="title">Nome da empresa</label>
+              <label htmlFor="manufacturer_name">Nome da empresa:</label>
               <input
                 type="text"
                 className="form-control"
                 id="manufacturer_name"
                 required
                 value={this.state.manufacturer_name}
-                onChange={this.onChangeTitle}
+                onChange={this.onChangeManufacturerName}
                 name="manufacturer_name"
+              />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="manufacturer_cnpj">CNPJ:</label>
+              <input
+                type="number"
+                className="form-control"
+                id="manufacturer_cnpj"
+                required
+                value={this.state.manufacturer_cnpj}
+                onChange={this.onChangeManufacturerCnpj}
+                name="manufacturer_cnpj"
+              />
+            </div>
+             {/*
+            <div className="form-group">
+              <label htmlFor="manufacturer_fantasy_name">Nome Fantasia:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="manufacturer_fantasy_name"
+                required
+                value={this.state.manufacturer_fantasy_name}
+                onChange={this.onChangeManufacturerFantasyName}
+                name="manufacturer_fantasy_name"
+              />
+            </div>
+            THIS ONE IS A VALID COMMENT 
+            <div className="form-group">
+              <label htmlFor="manufacturer_social_name">Nome Social:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="manufacturer_social_name"
+                required
+                value={this.state.manufacturer_social_name}
+                onChange={this.onChangeManufacturerSocialName}
+                name="manufacturer_social_name"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="manufacturer_active">CNPJ Ativo?</label>
               <input
-                type="text"
+                type="checkbox"
                 className="form-control"
-                id="description"
+                id="manufacturer_active"
                 required
-                value={this.state.description}
-                onChange={this.onChangeDescription}
-                name="description"
+                value={this.state.manufacturer_active}
+                onChange={this.onChangeManufacturerActive}
+                name="manufacturer_active"
               />
             </div>
 
-            <button onClick={this.saveTutorial} className="btn btn-success">
+            <div className="form-group">
+              <label htmlFor="manufacturer_site">Site:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="manufacturer_site"
+                required
+                value={this.state.manufacturer_site}
+                onChange={this.onChangeManufacturerSite}
+                name="manufacturer_site"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="manufacturer_country">País:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="manufacturer_country"
+                required
+                value={this.state.manufacturer_country}
+                onChange={this.onChangeManufacturerCountry}
+                name="manufacturer_country"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="manufacturer_city">Cidade:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="manufacturer_city"
+                required
+                value={this.state.manufacturer_city}
+                onChange={this.onChangeManufacturerCity}
+                name="manufacturer_city"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="manufacturer_bairro">bairro:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="manufacturer_bairro"
+                required
+                value={this.state.manufacturer_bairro}
+                onChange={this.onChangeManufacturerBairro}
+                name="manufacturer_bairro"
+              />
+            </div>
+            */}
+            <button onClick={this.saveEmpresa} className="btn btn-success">
               Submit
             </button>
           </div>

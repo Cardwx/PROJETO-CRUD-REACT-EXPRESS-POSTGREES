@@ -3,23 +3,23 @@ class EmpresaDataService {
   getAll() {
     return http.get("/empresas");
   }
-  get(id) {
-    return http.get(`/empresas/${id}`);
+  get(manufacturer_cnpj) {
+    return http.get(`/empresas/${manufacturer_cnpj}`);
   }
   create(data) {
     return http.post("/empresas", data);
   }
-  update(id, data) {
-    return http.put(`/empresas/${id}`, data);
+  update(manufacturer_cnpj, data) {
+    return http.put(`/empresas/${manufacturer_cnpj}`, data);
   }
-  delete(id) {
-    return http.delete(`/empresas/${id}`);
+  delete(manufacturer_cnpj) {
+    return http.delete(`/empresas/${manufacturer_cnpj}`);
   }
   deleteAll() {
     return http.delete(`/empresas`);
   }
-  findByTitle(title) {
-    return http.get(`/empresas?title=${title}`);
+  findByTitle(manufacturer_cnpj) {
+    return http.get(`/empresas?title=${manufacturer_cnpj}`);
   }
 }
 export default new EmpresaDataService();
