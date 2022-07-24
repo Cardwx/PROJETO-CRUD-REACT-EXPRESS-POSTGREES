@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new empresa
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.manufacturer_name) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,9 +14,9 @@ exports.create = (req, res) => {
 
   // Create a empresa
   const empresa = {
-    manufacture_id:req.body.manufacture_id,
     manufacturer_name: req.body.manufacturer_name,
     manufacturer_cnpj: req.body.manufacturer_cnpj,
+    published: req.body.published ? req.body.published : false
   };
 
   // Save empresa in the database
@@ -34,8 +34,8 @@ exports.create = (req, res) => {
 
 // Retrieve all empresa from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.manufacturer_name;
-  var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+  const manufacturer_name = req.query.manufacturer_name;
+  var condition = manufacturer_name ? { manufacturer_name: { [Op.iLike]: `%${manufacturer_name}%` } } : null;
 
   Empresa.findAll({ where: condition })
     .then(data => {
@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 
 // Find a single empresa with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.manufacturer_name;
 
   Empresa.findByPk(id)
     .then(data => {

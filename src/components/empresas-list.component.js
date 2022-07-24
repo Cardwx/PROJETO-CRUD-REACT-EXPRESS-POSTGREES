@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import EmpresaDataService from "../services/empresa.service";
-import { Link } from "react-router-dom";
+
 
 export default class EmpresasList extends Component {
+  
   constructor(props) {
     super(props);
-    this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
+    this.onChangeSearchName = this.onChangeSearchName.bind(this);
     this.retrieveEmpresas = this.retrieveEmpresas.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveEmpresa = this.setActiveEmpresa.bind(this);
     this.removeAllEmpresas = this.removeAllEmpresas.bind(this);
-    this.searchTitle = this.searchTitle.bind(this);
+    this.searchName = this.searchName.bind(this);
+
 
     this.state = {
       empresas: [],
       currentEmpresa: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchName: ""
     };
   }
 
@@ -24,11 +26,11 @@ export default class EmpresasList extends Component {
     this.retrieveEmpresas();
   }
 
-  onChangeSearchTitle(e) {
-    const searchTitle = e.target.value;
+  onChangeSearchName(e) {
+    const searchName = e.target.value;
 
     this.setState({
-      searchTitle: searchTitle
+      searchName: searchName
     });
   }
 
@@ -71,13 +73,13 @@ export default class EmpresasList extends Component {
       });
   }
 
-  searchTitle() {
+  searchName() {
     this.setState({
       currentEmpresa: null,
       currentIndex: -1
     });
 
-    EmpresaDataService.findByTitle(this.state.searchTitle)
+    EmpresaDataService.findByName(this.state.searchName)
       .then(response => {
         this.setState({
           empresas: response.data
@@ -90,7 +92,7 @@ export default class EmpresasList extends Component {
   }
 
   render() {
-    const { searchTitle, empresas, currentEmpresa, currentIndex } = this.state;
+    const { searchName, empresas, currentEmpresa, currentIndex } = this.state;
 
     return (
       <div className="list row">
@@ -99,17 +101,17 @@ export default class EmpresasList extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Search by title"
-              value={searchTitle}
-              onChange={this.onChangeSearchTitle}
+              placeholder="Procurar pelo nome da empresa"
+              value={searchName}
+              onChange={this.onChangeSearchName}
             />
             <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
-                onClick={this.searchTitle}
+                onClick={this.searchName}
               >
-                Search
+                Procurar
               </button>
             </div>
           </div>
@@ -128,7 +130,7 @@ export default class EmpresasList extends Component {
                   onClick={() => this.setActiveEmpresa(empresa, index)}
                   key={index}
                 >
-                  {empresa.title}
+                  {empresa.manufacturer_name}
                 </li>
               ))}
           </ul>
@@ -143,37 +145,69 @@ export default class EmpresasList extends Component {
         <div className="col-md-6">
           {currentEmpresa ? (
             <div>
-              <h4>empresa</h4>
+              <h4>Empresa</h4>
               <div>
                 <label>
-                  <strong>Title:</strong>
+                  <strong>Nome da empresa:</strong>
                 </label>{" "}
-                {currentEmpresa.title}
+                {currentEmpresa.manufacturer_name}
+              </div>
+              
+              <div>
+                <label>
+                  <strong>CNPJ:</strong>
+                </label>{" "}
+                {currentEmpresa.manufacturer_cnpj}
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
+                  <strong>Nome Fantasia:</strong>
                 </label>{" "}
-                {currentEmpresa.description}
+                {currentEmpresa.manufacturer_fantasy_name}
               </div>
               <div>
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Nome Social:</strong>
                 </label>{" "}
-                {currentEmpresa.published ? "Published" : "Pending"}
+                {currentEmpresa.manufacturer_social_name}
+              </div>
+              <div>
+                <label>
+                  <strong>Empresa Ativa:</strong>
+                </label>{" "}
+                {currentEmpresa.manufacturer_active}
+              </div>
+              <div>
+                <label>
+                  <strong>Site:</strong>
+                </label>{" "}
+                {currentEmpresa.manufacturer_site}
+              </div>
+              <div>
+                <label>
+                  <strong>País:</strong>
+                </label>{" "}
+                {currentEmpresa.manufacturer_country}
+              </div>
+              <div>
+                <label>
+                  <strong>Cidade:</strong>
+                </label>{" "}
+                {currentEmpresa.manufacturer_city}
+              </div>
+              <div>
+                <label>
+                  <strong>Bairro:</strong>
+                </label>{" "}
+                {currentEmpresa.manufacturer_bairro}
               </div>
 
-              <Link
-                to={"/empresas/" + currentEmpresa.id}
-                className="badge badge-warning"
-              >
-                Edit
-              </Link>
+              
             </div>
           ) : (
             <div>
               <br />
-              <p>Please click on a empresa...</p>
+       
             </div>
           )}
         </div>

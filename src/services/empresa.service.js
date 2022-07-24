@@ -18,8 +18,8 @@ class EmpresaDataService {
   deleteAll() {
     return http.delete(`/empresas`);
   }
-  findByTitle(manufacturer_name) {
-    return http.get(`/empresas?title=${manufacturer_name}`);
+  findByName(title) {
+    return http.get(`/empresas?title=${title}`);
   }
 }
 export default new EmpresaDataService();

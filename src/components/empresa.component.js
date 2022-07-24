@@ -7,12 +7,12 @@ export default class Empresa extends Component {
     this.onChangeCnpj = this.onChangeCnpj.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.getEmpresa = this.getEmpresa.bind(this);
+    
     this.deleteEmpresa = this.deleteEmpresa.bind(this);
 
     this.state = {
       currentEmpresa: {
         manufacture_id: null,
-
         manufacturer_name: "",
         manufacturer_cnpj : "", 
         /*
