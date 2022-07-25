@@ -1,33 +1,31 @@
 module.exports = (sequelize, Sequelize) => {
     const Empresa = sequelize.define("empresa", {
-      manufacturer_id : {
-        type: Sequelize.INTEGER
-      },
-      manufacturer_name : {
+
+      manufacturer_name: {
         type: Sequelize.STRING
       },
-        manufacturer_cnpj : {
+        manufacturer_cnpj: {
         type: Sequelize.STRING
       },
-      manufacturer_fantasy_name : {
+      manufacturer_fantasy_name: {
         type: Sequelize.STRING
       },
-      manufacturer_social_name  : {
+      manufacturer_social_name: {
         type: Sequelize.STRING
       },
-      manufacturer_active   : {
+      manufacturer_active:{
         type: Sequelize.STRING
       },
-      manufacturer_site   : {
+      manufacturer_site:{
         type: Sequelize.STRING
       },
-      manufacturer_country    : {
+      manufacturer_country:{
         type: Sequelize.STRING
       },
-      manufacturer_city     : {
+      manufacturer_city:{
         type: Sequelize.STRING
       },
-      manufacturer_bairro     : {
+      manufacturer_bairro:{
         type: Sequelize.STRING
       },
 

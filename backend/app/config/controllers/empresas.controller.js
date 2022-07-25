@@ -16,6 +16,13 @@ exports.create = (req, res) => {
   const empresa = {
     manufacturer_name: req.body.manufacturer_name,
     manufacturer_cnpj: req.body.manufacturer_cnpj,
+    manufacturer_fantasy_name: req.body.manufacturer_fantasy_name,
+    manufacturer_social_name: req.body.manufacturer_social_name,
+    manufacturer_active: req.body.manufacturer_active,
+    manufacturer_site: req.body.manufacturer_site,
+    manufacturer_country: req.body.manufacturer_country,
+    manufacturer_city: req.body.manufacturer_city,
+    manufacturer_bairro: req.body.manufacturer_bairro,
     published: req.body.published ? req.body.published : false
   };
 

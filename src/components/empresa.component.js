@@ -15,7 +15,7 @@ export default class Empresa extends Component {
         manufacture_id: null,
         manufacturer_name: "",
         manufacturer_cnpj : "", 
-        /*
+
         manufacturer_fantasy_name  : "",
         manufacturer_social_name  : "",
         manufacturer_active  : "",
@@ -24,7 +24,7 @@ export default class Empresa extends Component {
         manufacturer_city  : "",
         manufacturer_bairro   : "",
         published: false,
-        */
+        
         submitted: false
       },
       message: ""

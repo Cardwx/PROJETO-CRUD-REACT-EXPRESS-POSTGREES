@@ -18,67 +18,56 @@ export default class AddEmpresa extends Component {
     this.saveEmpresa = this.saveEmpresa.bind(this);
     this.newEmpresa = this.newEmpresa.bind(this);
 
-  
-    
-
-
     this.state = {
       manufacture_id: null,
-      manufacturer_cnpj : "",
+      manufacturer_cnpj: "",
       manufacturer_name: "",
-      manufacturer_fantasy_name  : "",
-      manufacturer_social_name  : "",
-      manufacturer_active  : "",
-      manufacturer_site  : "",
-      manufacturer_country  : "",
-      manufacturer_city  : "",
-      manufacturer_bairro   : "",
+      manufacturer_fantasy_name:"",
+      manufacturer_social_name:"",
+      manufacturer_active:"",
+      manufacturer_site:"",
+      manufacturer_country:"",
+      manufacturer_city:"",
+      manufacturer_bairro:"",
    
       submitted: false
     };
   }
-
-
   onChangeManufacturerName(e) {
-    this.setState({
-      manufacturer_name: e.target.value,
-    
-    });
-  }
+    this.setState({manufacturer_name: e.target.value });}
 
    // altera cnpj
    onChangeManufacturerCnpj(e){
-    this.setState({
-      manufacturer_cnpj: e.target.value,
-    });}
+    this.setState({manufacturer_cnpj: e.target.value});}
 
   // altera nome fantasia
   onChangeManufacturerFantasyName(e){
-    this.setState({manufacturer_fantasy_name: e.target.value,});}
+    this.setState({manufacturer_fantasy_name: e.target.value});}
 
   //altera nome social
   onChangeManufacturerSocialName(e){
-    this.setState({manufacturer_social_name: e.target.value,});}
+    this.setState({manufacturer_social_name: e.target.value});}
 
     //altera se está ativa ou não
   onChangeManufacturerActive(e){
-    this.setState({manufacturer_active: e.target.value,});}
+    this.setState({manufacturer_active: e.target.value});}
 
     //altera site
   onChangeManufacturerSite(e){
-    this.setState({manufacturer_site: e.target.value,});}
+    this.setState({manufacturer_site: e.target.value});}
+
     //altera pais
   onChangeManufacturerCountry(e){
-    this.setState({manufacturer_country: e.target.value,});}
+    this.setState({manufacturer_country: e.target.value});}
+
     //altera cidade
   onChangeManufacturerCity(e){
-    this.setState({manufacturer_city: e.target.value,});}
+    this.setState({manufacturer_city: e.target.value});}
+
     //altera bairro
   onChangeManufacturerBairro(e){
-    this.setState({manufacturer_bairro: e.target.value,});}
-   
+    this.setState({manufacturer_bairro: e.target.value});}
 
-    
   saveEmpresa() {
     var data = {
       manufacturer_name: this.state.manufacturer_name,
@@ -92,13 +81,9 @@ export default class AddEmpresa extends Component {
       manufacturer_bairro: this.state.manufacturer_bairro,
     };
      
-      
-      
-
     EmpresaDataService.create(data)
       .then(response => {
         this.setState({
-          manufacture_id: response.data.manufacture_id,
           manufacturer_name: response.data.manufacturer_name,
           manufacturer_cnpj: response.data.manufacturer_cnpj,
           manufacturer_fantasy_name: response.data.manufacturer_fantasy_name,
@@ -108,13 +93,9 @@ export default class AddEmpresa extends Component {
           manufacturer_country: response.data.manufacturer_country,
           manufacturer_city: response.data.manufacturer_city,
           manufacturer_bairro: response.data.manufacturer_bairro,
+          published: response.data.published,
           submitted: true
         });
-          /*
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published,*/
         console.log(response.data);
       })
       .catch(e => {
@@ -176,7 +157,7 @@ export default class AddEmpresa extends Component {
                 name="manufacturer_cnpj"
               />
             </div>
-
+              
             <div className="form-group">
               <label htmlFor="manufacturer_fantasy_name">Nome Fantasia:</label>
               <input
@@ -268,99 +249,6 @@ export default class AddEmpresa extends Component {
                 name="manufacturer_bairro"
               />
             </div>
-
-             {/*
-            <div className="form-group">
-              <label htmlFor="manufacturer_fantasy_name">Nome Fantasia:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="manufacturer_fantasy_name"
-                required
-                value={this.state.manufacturer_fantasy_name}
-                onChange={this.onChangeManufacturerFantasyName}
-                name="manufacturer_fantasy_name"
-              />
-            </div>
-            THIS ONE IS A VALID COMMENT 
-            <div className="form-group">
-              <label htmlFor="manufacturer_social_name">Nome Social:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="manufacturer_social_name"
-                required
-                value={this.state.manufacturer_social_name}
-                onChange={this.onChangeManufacturerSocialName}
-                name="manufacturer_social_name"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="manufacturer_active">CNPJ Ativo?</label>
-              <input
-                type="checkbox"
-                className="form-control"
-                id="manufacturer_active"
-                required
-                value={this.state.manufacturer_active}
-                onChange={this.onChangeManufacturerActive}
-                name="manufacturer_active"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="manufacturer_site">Site:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="manufacturer_site"
-                required
-                value={this.state.manufacturer_site}
-                onChange={this.onChangeManufacturerSite}
-                name="manufacturer_site"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="manufacturer_country">País:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="manufacturer_country"
-                required
-                value={this.state.manufacturer_country}
-                onChange={this.onChangeManufacturerCountry}
-                name="manufacturer_country"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="manufacturer_city">Cidade:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="manufacturer_city"
-                required
-                value={this.state.manufacturer_city}
-                onChange={this.onChangeManufacturerCity}
-                name="manufacturer_city"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="manufacturer_bairro">bairro:</label>
-              <input
-                type="text"
-                className="form-control"
-                id="manufacturer_bairro"
-                required
-                value={this.state.manufacturer_bairro}
-                onChange={this.onChangeManufacturerBairro}
-                name="manufacturer_bairro"
-              />
-            </div>
-            */}
             <button onClick={this.saveEmpresa} className="btn btn-success">
               Submit
             </button>
