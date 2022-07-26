@@ -26,7 +26,13 @@ Para iniciar a conexão com o banco, abra a pasta backend e rode o comando node 
 <br>
 Já em outro terminal abra a pasta src do projeto e execute o npm start para iniciar o projeto.
 
+# Por fim..
 
+O projeto será iniciado no localhost http://localhost:8080, certifique-se que nenhuma outra aplicação está na porta em questão
+
+# Sugestão de melhoria futura ao projeto:
+- Estudar a utilização do knex para consulta, tendo que vista que utilizei sequelize para tal função por nunca ter trabalhado com nenhuma aplicação full-stack;
+- Realizar a verificação se o cnpj em questão já estava criado no Db
 
 
 
