@@ -16,7 +16,7 @@ Clone o repositório em sua máquina ou baixe o zip e baixe as suas dependência
 *Axios para requisição API
 <br>
 # Iniciando o projeto:
-Antes de rodar o banco, verifique se o arquivo db.config.js está de acordo o db selecionado, nesse caso tanto a senha quanto o nome do banco precisam já estarem criados no pgadmin.
+Antes de rodar o banco, verifique se o arquivo db.config.js está de acordo o db selecionado, nesse caso tanto a senha quanto o nome do banco precisam já estarem criados no pgAdmin.
 <br>
 ![1](https://user-images.githubusercontent.com/68347193/181038042-f7ce8f01-8fd7-42af-8277-f841d15788e5.PNG)
 <br>
