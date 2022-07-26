@@ -6,6 +6,7 @@ Clone o repositório em sua máquina ou baixe o zip e baixe as suas dependência
 
 # Tecnologias utilizadas:
 *Reactjs
+<br>
 *Sequelize (para conexão com o banco)
 *Postgreesql
 *Bootstrap
