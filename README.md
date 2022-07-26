@@ -8,9 +8,13 @@ Clone o repositório em sua máquina ou baixe o zip e baixe as suas dependência
 *Reactjs
 <br>
 *Sequelize (para conexão com o banco)
+<br>
 *Postgreesql
+<br>
 *Bootstrap
+<br>
 *Axios para requisição API
+<br>
 # Iniciando o projeto:
 Antes de rodar o banco, verifique se o arquivo db.config.js está de acordo o db selecionado, nesse caso tanto a senha quanto o nome do banco precisam já estarem criados no pgadmin.
 Para iniciar a conexão com o banco, abra a pasta backend e rode o comando node server.js, o resultado apresentado deve ser o seguinte:
